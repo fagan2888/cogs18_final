@@ -130,18 +130,34 @@ def decode_attempt(message, letters):
     >>> decode_attempt(encoded, )
     
     '''
+    # List to store decoded message
     decoded = []
+    
+    # Finds each symbol and calculate its original character by shifting keys
     for key in range(len(letters)):
         translated = ''
+        
         for symbol in message:
+            
+            # Finds key to shift
             if symbol in letters:
                 num = letters.find(symbol)
                 num = num - key
+                
+                # If key is negative, search from the back of letters string
                 if num < 0:
                     num = num + len(letters)
+                    
+                # Append to output string
                 translated = translated + letters[num]
+            
             else:
                 translated = translated + symbol
+        
+        # Append to output messages
         decoded.append(translater)
+        
+        # Print decoded strings
         print('Hacking key #%s: %s' % (key, translated))
+        
     return decoded
